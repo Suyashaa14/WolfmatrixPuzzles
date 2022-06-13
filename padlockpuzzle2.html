@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="output"></p>
+    <script>
+        let n2=[6,8,2]; //1 digit right in right place
+        let n1=[6,1,4]; //1 digit right in wrong place
+        let n3=[2,0,6]; //2 digit right in wrong place
+        let n4=[7,3,8]; //all wrong
+        let n5=[3,8,0]; //1 digit right in wrong place
+        const result = [];
+         n4.forEach(cond4); // since n4 has all wrong digits so checking and eliminating all digits of n4 present in other arrays
+
+         function cond4(number){
+            for(let i=0;i<3;i++){
+                if(n1[i]==number){
+                    n1[i]=null;
+                }
+                if(n2[i]==number){
+                    n2[i]=null;
+                }
+                if(n3[i]==number){
+                    n3[i]=null;
+                }
+                if(n5[i]==number){
+                    n5[i]=null;
+                }
+            }
+        }
+n1.forEach(cond1);  //checking if the numbers are common between two arrays and setting null by comparing with other numbers 
+function cond1(number){
+    for(let i=0;i<3;i++){
+        if(n3[i]==number){
+            n3[i]=null;
+        }
+        if(n1[i]!=null){
+            result[1]=n1[i];
+        }
+    }
+} 
+n2.forEach(cond2); //checking if the no is null or not and  if not setting the result
+function cond2(number){
+    if(number!=null){
+      result[2]=number;
+       
+    }
+} 
+n3.forEach(cond3);
+function cond3(number){
+    if(number!=null){    
+        result[0]=number;
+       
+    }
+}
+
+console.log(result);  //print in console
+document.getElementById("output").innerHTML="Answer is: "+ result;     
+    </script>
+</body>
+</html>

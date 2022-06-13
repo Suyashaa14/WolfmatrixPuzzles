@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="file" accept=".csv"><br>
+    <button id="upload">Upload</button>
+    <p id="csvresult"></p>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+    <script>
+        const upload = document.getElementById("upload").addEventListener("click", () => {
+            Papa.parse(document.getElementById("file").files[0],
+            {
+                 skipEmptyLines: true,
+                complete: function(result){
+                    console.log("The number of Rows are : "+ result.data.length);
+                    const output=document.getElementById("csvresult").innerHTML="The number of Rows are : "+ result.data.length;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
